@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Document</title>
+  <script defer src="bundle93223216ba043c9ee61c.js"></script></head>
+  <body>
+    <div class="header">
+      <div class="headerTitle">
+        <span>Weather</span>
+      </div>
+      <div class="topnav">
+        <input class="searchCountry" type="text" placeholder="Search.." />
+        <button class="searchButton">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <div class="tempbuttonContainer">
+        <button class="tempUnitToggle">
+          <span class="unit">°C, m/s</span>
+        </button>
+      </div>
+    </div>
+    <div class="mainContainer">
+      <section class="multipleLocation">
+        <dialog class="locationList"></dialog>
+      </section>
+      <section class="location">
+        <h1>
+          <span class="city"></span>
+          ,
+          <span class="country"></span>
+        </h1>
+      </section>
+      <section class="temperature">
+        <div class="currentDayWeather">
+          <div class="tempNumber"></div>
+          <div class="weatherIcon"></div>
+          <div class="cloudCond"></div>
+          <div class="windSpeed"></div>
+        </div>
+        
+      </section>
+      <section class =weekView>
+        <h2>Weekly Forecast:</h2>
+      <div class="weeklyForecast"></div>
+    </div>
+  </section>
+  <footer>
+    <a href="https://www.google.com">
+    <i class="fa-brands fa-github"></i>
+    </a>
+  </footer>
+  </body>
+</html>
