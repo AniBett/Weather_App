@@ -1,10 +1,11 @@
 //`https://api.weatherapi.com/v1/current.json?key=092b5d87a69749d8ad2211113231405&q=${location}`
 import "./style.css";
+import weatherIcon from "./weather.png";
 const { parseISO, format, getDay } = require("date-fns");
 const img = document.querySelector("img");
 const country = document.querySelector(".country");
 const city = document.querySelector(".city");
-
+const body = document.querySelector(".bodyClass");
 const inputBar = document.querySelector(".searchCountry");
 const searchButton = document.querySelector(".searchButton");
 const board = document.querySelector(".locationList");
@@ -145,13 +146,24 @@ function createLocationItems(locations) {
   }
 }
 async function geoLocation(location = "Amsterdam") {
-  const response = await fetch(
-    `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=10&language=en&format=json`,
-    { mode: "cors" }
-  );
-  const geoLocationResult = await response.json();
-  console.log(geoLocationResult);
-  createLocationItems(geoLocationResult);
+  let errorMessage = document.querySelector(".errorMessage");
+  errorMessage.innerHTML = "";
+  try {
+    const response = await fetch(
+      `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=10&language=en&format=json`,
+      { mode: "cors" }
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok"); // Handle non-200 status codes
+      return;
+    }
+    const geoLocationResult = await response.json();
+    console.log(geoLocationResult);
+    createLocationItems(geoLocationResult);
+    return;
+  } catch (error) {
+    errorMessage.innerHTML = "Location Not Found";
+  }
 }
 function weatherIconSetter(weatherCode, isDay) {
   const weatherIcon = document.querySelector(".weatherIcon");
